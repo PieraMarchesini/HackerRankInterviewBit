@@ -1,4 +1,4 @@
-# HackerRankInterviewBit
+# HackerRank and InterviewBit Solutions
 Solution of exercises in HackerRank and InterviewBit in Swift
 
 A playground project with solutions in Swift
