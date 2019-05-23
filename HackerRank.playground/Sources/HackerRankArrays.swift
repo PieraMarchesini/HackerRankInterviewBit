@@ -94,7 +94,6 @@ public class HackerRankArrays {
                 }
                 return element
             }).enumerated()
-            print(arr)
         }
         let (_, maxValue) = arr.max(by: { $0.element < $1.element }) ?? (0,0)
         return maxValue
