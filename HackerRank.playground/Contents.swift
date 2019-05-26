@@ -10,11 +10,11 @@ HackerRankWarmUp.repeatedString(s: "ojowrdcpavatfacuunxycyrmpbkvaxyrsgquwehhurni
 
 // MARK: - HackerRank - Arrays
 HackerRankArrays.hourglassSum(arr: [[1, 1, 1, 0, 0, 0],
-                   [0, 1, 0, 0, 0, 0],
-                   [1, 1, 1, 0, 0, 0],
-                   [0, 0, 2, 4, 4, 0],
-                   [0, 0, 0, 2, 0, 0],
-                   [0, 0, 1, 2, 4, 0]])
+                                    [0, 1, 0, 0, 0, 0],
+                                    [1, 1, 1, 0, 0, 0],
+                                    [0, 0, 2, 4, 4, 0],
+                                    [0, 0, 0, 2, 0, 0],
+                                    [0, 0, 1, 2, 4, 0]])
 HackerRankArrays.rotLeft(a: [1, 2, 3, 4, 5], d: 4)
 HackerRankArrays.minimumBribes(q: [2, 1, 5, 3, 4])
 HackerRankArrays.minimumSwaps(arr: [1, 5, 4, 3, 2])
@@ -55,35 +55,35 @@ InterviewBitArrays.firstMissingPositive(&fmp)
 var linearFirstMissing = [2, 3, 7, 6, 8, -1, -10, 15]
 InterviewBitArrays.linearfirstMissingPositive(&linearFirstMissing)
 
-sqrt(9.0)
+// MARK: - Check whether two strings are anagram of each other
+func areAnagrams(str1: String, str2: String) -> Bool { //O(n log n)
+    //If length of both strings is not same, then they cannot be anagram
+    if str1.count != str2.count {
+        return false
+    }
+    if str1.sorted() == str2.sorted() {
+        return true
+    }
+    return false
+}
+areAnagrams(str1: "acab", str2: "caad")
 
 // MARK: - InterviewBit Math
-// MARK: - EXAMPLE: All Factors
-// a * b = N
-// if a < b && a < sqrt(n) && b > sqrt(n)
-func allFactors(_ A: Int) -> [Int] {
-    if A == 1 { return [1] }
-    var factors = [1, A]
-    for i in 2...Int(sqrt(Double(A))) {
-        if A % i == 0 {
-            factors.append(i)
-            if A/i != i {
-                factors.append(A/i)
-            }
-        }
-    }
-    return factors.sorted()
-}
-allFactors(36)
+InterviewBitMath.allFactors(36)
+InterviewBitMath.isPrime(7)
+InterviewBitMath.sieve(10)
+InterviewBitMath.sieveOfEratosthenes(10)
+InterviewBitMath.findDigitsInBinary(1)
+InterviewBitMath.findDigitsInDecimal(5670)
+InterviewBitMath.fizzBuzz(5)
+InterviewBitMath.titleToNumber(column: "AF")
+InterviewBitMath.isPalindrome(number: 121)
+InterviewBitMath.isPalindromeLinear(121)
+InterviewBitMath.greatDivisor(1,0)
+InterviewBitMath.solve([0,1,5], 1,5)
+var arrangeArr = [3,2,0,1]
+InterviewBitMath.arrange(&arrangeArr)
+InterviewBitMath.exponencialUniquePaths(3, 5)
+InterviewBitMath.dynamicProgrammingGridUniquePaths(3, 2)
+InterviewBitMath.combinationGridUNiquePaths(12, 5)
 
-// MARK: - EXAMPLE: Verify Primes
-func isPrime(_ A: Int) -> Int {
-    if A == 1 { return 0 }
-    if A == 2 { return 1 }
-    for i in 2...Int(sqrt(Double(A))) {
-        if A % i == 0 { return 0 }
-    }
-    return 1
-}
-
-isPrime(7)
