@@ -87,99 +87,13 @@ InterviewBitMath.exponencialUniquePaths(3, 5)
 InterviewBitMath.dynamicProgrammingGridUniquePaths(3, 2)
 InterviewBitMath.combinationGridUNiquePaths(12, 5)
 
-// MARK: - InterviewBit BinarySearch - O(log n)
-func binarySearch(array: [Int], find: Int) -> Int { //array previously sorted
-    var start = 0, end = array.count-1
-    while start <= end {
-        let mid = Int((start+end)/2)
-        if array[mid] == find { //match
-            return mid
-        } else if array[mid] < find { //go to right side
-            start = mid+1
-        } else { //go to left side
-            end = mid-1
-        }
-    }
-    return -1 //array doesn't have element
-}
-
-func binarySearch(array: [Int], find: Int, searchFirst: Bool) -> Int {
-    var start = 0, end = array.count-1, result = -1
-    while start <= end {
-        let mid = Int((start+end)/2)
-        if array[mid] == find {
-            result = mid
-            if searchFirst {
-                end = mid-1
-            } else {
-                start = mid+1
-            }
-        } else if array[mid] > find {
-            end = mid-1
-        } else {
-            start = mid+1
-        }
-    }
-    return result
-}
-binarySearch(array: [1,2,3,4,5,5,5,6,7,8], find: 5, searchFirst: true)
-
-// MARK: - EXAMPLE: Count Element Occurence
-func findCount(_ A: [Int], _ B: Int) -> Int {
-    let start = binarySearch(array: A, find: B, searchFirst: true)
-    if start == -1 { return 0 }
-    let end = binarySearch(array: A, find: B, searchFirst: false)
-    return end-start+1
-}
-findCount([5, 7, 8, 9, 10], 8)
-
-// MARK: - EXAMPLE: Rotated Array
-func findMin(_ A: [Int]) -> Int { //modification of binary search: find pivot (next and previous are greater)
-    //This algorithm work if there are no duplicates in the array
-    var low = 0, high = A.count-1
-    while low <= high {
-        //Case 1
-        if A[low] <= A[high] { return low }
-        let mid = Int((high+low)/2)
-        let prev = (mid+A.count-1) % A.count
-        //+A.count-1 since the array is rotated and % A.count goes to the first element if it's on the end
-        //Case 2
-        if A[prev] > A[mid] {
-            return mid
-        } else if A[mid] >= A[low] {
-            low = mid+1
-        } else {
-            high = mid-1
-        }
-    }
-    return -1
-}
-findMin([15,22,23,28,31,38,5,6,8,10,12])
-
-func sqrt(_ A: Int) -> Int {
-    //0 <= result <= A
-    //If r*r <= x, S >= r
-    //If r*r > x, S < r
-    if A == 0 {
-        return A
-    }
-    var start = 1, end = A, result = -1
-    while start <= end {
-        let mid = Int((start+end)/2)
-        if mid <= A/mid {
-            start = mid+1
-            result = mid
-        } else {
-            end = mid-1
-        }
-    }
-    return result
-}
-sqrt(11)
-
-// MARK: - Search for a Range
-func searchRange(_ A: [Int], _ B: Int) -> [Int] {
-    //binarysearch - findfirst and last
-    return [binarySearch(array: A, find: B, searchFirst: true), binarySearch(array: A, find: B, searchFirst: false)]
-}
-searchRange([5, 7, 7, 8, 8, 10], 7)
+// MARK: - InterviewBit Binary Search
+InterviewBitBinarySearch.binarySearch(array: [1,2,3,4,5,5,5,6,7,8], find: 5, searchFirst: true)
+InterviewBitBinarySearch.findCount([5, 7, 8, 9, 10], 8)
+InterviewBitBinarySearch.findMin([15,22,23,28,31,38,5,6,8,10,12])
+InterviewBitBinarySearch.sqrt(11)
+InterviewBitBinarySearch.searchRange([5, 7, 7, 8, 8, 10], 7)
+InterviewBitBinarySearch.powmod(x: 2, n: 3, p: 3)
+InterviewBitBinarySearch.search(A: [4, 5, 6, 7, 0, 1, 2], target: 2)
+InterviewBitBinarySearch.paint(painters: 2, time: 5, boards: [1,10,2])
+InterviewBitBinarySearch.books(books: [12, 34, 67, 90], students: 2)
